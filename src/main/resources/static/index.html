@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form id="formElem">
+  <input type="text" name="name" value="Severin">
+  <input type="text" name="email" value="severin@minotrade.com">
+  <input type="submit">
+</form>
+
+<script>
+  formElem.onsubmit = async (e) => {
+    e.preventDefault();
+
+    let response = await fetch('/demo/add', {
+      method: 'POST',
+      body: new FormData(formElem)
+    });
+
+    let result = await response.json();
+
+    alert(result.message);
+  };
+</script>
+</body>
+</html>
